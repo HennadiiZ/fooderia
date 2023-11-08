@@ -5,7 +5,7 @@ import Menu, { menuLoader } from './features/menu/Menu';
 import Cart from './features/cart/Cart';
 import Order, { orderLoader } from './features/order/Order';
 import CreateOrder from './features/order/CreateOrder';
-import OrderItem from './features/order/OrderItem';
+// import OrderItem from './features/order/OrderItem';
 import AppLayout from './ui/AppLayout';
 import Error from './ui/Error';
 
