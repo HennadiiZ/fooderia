@@ -1,16 +1,19 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './ui/Home';
 import CreateUser from './features/user/CreateUser';
-import Menu from './features/menu/Menu';
+import Menu, { menuLoader } from './features/menu/Menu';
 import Cart from './features/cart/Cart';
-import Order from './features/order/Order';
+import Order, { orderLoader } from './features/order/Order';
 import CreateOrder from './features/order/CreateOrder';
-import OrderItem from './features/order/OrderItem';
+// import OrderItem from './features/order/OrderItem';
 import AppLayout from './ui/AppLayout';
+import Error from './ui/Error';
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <Error />,
+
     children: [
       {
         path: '/',
@@ -21,22 +24,38 @@ const router = createBrowserRouter([
         element: <CreateUser />,
         // loader: teamLoader,
       },
-      { path: '/menu', element: <Menu /> },
+      {
+        path: '/menu',
+        element: <Menu />,
+        loader: menuLoader,
+        errorElement: <Error />,
+      },
       { path: '/cart', element: <Cart /> },
       {
-        path: '/order',
-        element: <Order />,
-        children: [
-          {
-            path: 'new',
-            element: <CreateOrder />,
-          },
-          {
-            path: ':id',
-            element: <OrderItem />,
-          },
-        ],
+        path: '/order/new',
+        element: <CreateOrder />,
       },
+      {
+        path: '/order/:orderId',
+        element: <Order />,
+        loader: orderLoader,
+        errorElement: <Error />,
+      },
+      // {
+      //   path: '/order',
+      //   element: <Order />,
+      //   loader: orderLoader,
+      //   children: [
+      //     {
+      //       path: 'new',
+      //       element: <CreateOrder />,
+      //     },
+      //     {
+      //       path: ':id',
+      //       element: <OrderItem />,
+      //     },
+      //   ],
+      // },
     ],
   },
 ]);
