@@ -24,7 +24,12 @@ const router = createBrowserRouter([
         element: <CreateUser />,
         // loader: teamLoader,
       },
-      { path: '/menu', element: <Menu />, loader: menuLoader },
+      {
+        path: '/menu',
+        element: <Menu />,
+        loader: menuLoader,
+        errorElement: <Error />,
+      },
       { path: '/cart', element: <Cart /> },
       {
         path: '/order',
