@@ -6,36 +6,36 @@ import Cart from './features/cart/Cart';
 import Order from './features/order/Order';
 import CreateOrder from './features/order/CreateOrder';
 import OrderItem from './features/order/OrderItem';
+import AppLayout from './ui/AppLayout';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/user',
-    element: <CreateUser />,
-    // loader: teamLoader,
-  },
-  {
-    path: '/cart',
-    element: <Cart />,
-  },
-  {
-    path: '/menu',
-    element: <Menu />,
-  },
-  {
-    path: '/order',
-    element: <Order />,
+    element: <AppLayout />,
     children: [
       {
-        path: 'new',
-        element: <CreateOrder />,
+        path: '/',
+        element: <Home />,
       },
       {
-        path: ':id',
-        element: <OrderItem />,
+        path: '/user',
+        element: <CreateUser />,
+        // loader: teamLoader,
+      },
+      { path: '/menu', element: <Menu /> },
+      { path: '/cart', element: <Cart /> },
+      {
+        path: '/order',
+        element: <Order />,
+        children: [
+          {
+            path: 'new',
+            element: <CreateOrder />,
+          },
+          {
+            path: ':id',
+            element: <OrderItem />,
+          },
+        ],
       },
     ],
   },
