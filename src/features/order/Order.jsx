@@ -1,5 +1,6 @@
 // Test ID: IIDSAT
 
+// import { useParams } from 'react-router-dom';
 import { getOrder } from '../../services/apiRestaurant';
 import {
   calcMinutesLeft,
@@ -57,6 +58,7 @@ function Order() {
 
   //
   // const { orderId } = useParams();
+  // console.log(orderId);
   //
 
   return (
@@ -88,9 +90,10 @@ function Order() {
   );
 }
 
-export async function orderLoader() {
+export async function orderLoader({ params }) {
   // instead of useEffect
-  const order = await getOrder();
+  const order = await getOrder(params.orderId);
+  console.log(order);
   return order;
 }
 

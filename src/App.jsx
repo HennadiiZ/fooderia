@@ -3,7 +3,7 @@ import Home from './ui/Home';
 import CreateUser from './features/user/CreateUser';
 import Menu, { menuLoader } from './features/menu/Menu';
 import Cart from './features/cart/Cart';
-import Order from './features/order/Order';
+import Order, { orderLoader } from './features/order/Order';
 import CreateOrder from './features/order/CreateOrder';
 import OrderItem from './features/order/OrderItem';
 import AppLayout from './ui/AppLayout';
@@ -32,19 +32,30 @@ const router = createBrowserRouter([
       },
       { path: '/cart', element: <Cart /> },
       {
-        path: '/order',
-        element: <Order />,
-        children: [
-          {
-            path: 'new',
-            element: <CreateOrder />,
-          },
-          {
-            path: ':id',
-            element: <OrderItem />,
-          },
-        ],
+        path: '/order/new',
+        element: <CreateOrder />,
       },
+      {
+        path: '/order/:orderId',
+        element: <Order />,
+        loader: orderLoader,
+        errorElement: <Error />,
+      },
+      // {
+      //   path: '/order',
+      //   element: <Order />,
+      //   loader: orderLoader,
+      //   children: [
+      //     {
+      //       path: 'new',
+      //       element: <CreateOrder />,
+      //     },
+      //     {
+      //       path: ':id',
+      //       element: <OrderItem />,
+      //     },
+      //   ],
+      // },
     ],
   },
 ]);
