@@ -88,6 +88,15 @@ export async function createOrderAction({ request }) {
   const data = Object.fromEntries(formData);
   // console.log(formData); // // FormData {}
   // console.log('Data', data); // {customer: 'hhh', phone: '+380971302977', address: 'jhbkj,'}
+  console.log('Data', data);
+
+  const order = {
+    ...data,
+    cart: JSON.parse(data.cart),
+    priority: data.priority === 'on',
+  };
+
+  console.log('order', order);
 
   return null;
 }
