@@ -1,5 +1,6 @@
 // Test ID: IIDSAT
 
+import { getOrder } from '../../services/apiRestaurant';
 import {
   calcMinutesLeft,
   formatCurrency,
@@ -54,6 +55,10 @@ function Order() {
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
+  //
+  // const { orderId } = useParams();
+  //
+
   return (
     <div>
       <div>
@@ -81,6 +86,12 @@ function Order() {
       </div>
     </div>
   );
+}
+
+export async function orderLoader() {
+  // instead of useEffect
+  const order = await getOrder();
+  return order;
 }
 
 export default Order;

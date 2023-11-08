@@ -8,7 +8,7 @@ function AppLayout() {
   const navigation = useNavigation();
   console.log(navigation);
   const isLoading = navigation.state === 'loading';
-  // {state: 'idle', location: undefined, …}
+  // {state: 'idle', location: undefined,…}
   // {state: 'loading', location: {…},…}
 
   return (

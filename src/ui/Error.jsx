@@ -4,7 +4,7 @@ function NotFound() {
   const navigate = useNavigate();
   const error = useRouteError();
   console.log(error);
-  // ErrorResponseImpl {status: 404, statusText: 'Not Found', internal: true, data: 'Error: No route matches URL "/jhjkh"', error: Error: No route matches URL "/jhjkh"
+  // ErrorResponseImpl{status: 404, statusText: 'Not Found', internal: true, data: 'Error: No route matches URL "/jhjkh"', error: Error: No route matches URL "/jhjkh"
   console.log(error.status, error.statusText);
 
   return (
