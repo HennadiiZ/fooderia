@@ -66,3 +66,5 @@ export default App;
 // colors:
 // bg-stone-400
 // bg-stone-600
+
+// body: bg-stone-200 text-stone-600
