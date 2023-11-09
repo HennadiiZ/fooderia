@@ -1,7 +1,5 @@
 // Test ID: IIDSAT
 // CQE92U
-
-// import { useParams } from 'react-router-dom';
 import { useLoaderData } from 'react-router-dom';
 import { getOrder } from '../../services/apiRestaurant';
 import {
@@ -58,11 +56,6 @@ function Order() {
     // cart,
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
-
-  //
-  // const { orderId } = useParams();
-  // console.log(orderId);
-  //
 
   return (
     <div>

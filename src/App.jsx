@@ -5,7 +5,6 @@ import Menu, { menuLoader } from './features/menu/Menu';
 import Cart from './features/cart/Cart';
 import Order, { orderLoader } from './features/order/Order';
 import CreateOrder, { createOrderAction } from './features/order/CreateOrder';
-// import OrderItem from './features/order/OrderItem';
 import AppLayout from './ui/AppLayout';
 import Error from './ui/Error';
 
@@ -22,7 +21,6 @@ const router = createBrowserRouter([
       {
         path: '/user',
         element: <CreateUser />,
-        // loader: teamLoader,
       },
       {
         path: '/menu',
@@ -42,21 +40,6 @@ const router = createBrowserRouter([
         loader: orderLoader,
         errorElement: <Error />,
       },
-      // {
-      //   path: '/order',
-      //   element: <Order />,
-      //   loader: orderLoader,
-      //   children: [
-      //     {
-      //       path: 'new',
-      //       element: <CreateOrder />,
-      //     },
-      //     {
-      //       path: ':id',
-      //       element: <OrderItem />,
-      //     },
-      //   ],
-      // },
     ],
   },
 ]);
