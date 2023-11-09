@@ -57,3 +57,6 @@ export default App;
 // npm i eslint vite-plugin-eslint eslint-config-react-app --save-dev
 
 // npm i react-router-dom@6
+
+// npm install -D tailwindcss postcss autoprefixer
+// npx tailwindcss init -p
