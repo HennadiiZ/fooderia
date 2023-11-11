@@ -24,7 +24,7 @@ function CreateUser() {
 
       {username !== '' && (
         <div>
-          <Button>
+          <Button type='primary'>
             {/* {isSubmitting ? 'Ordering...' : 'Start ordering'} */}
             Start ordering
           </Button>
