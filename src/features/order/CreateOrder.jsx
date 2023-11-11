@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import { createOrder } from '../../services/apiRestaurant';
 
@@ -35,13 +35,9 @@ const fakeCart = [
 function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-
   const formErrors = useActionData();
-
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
-
-  // <Form method='POST'> also PATCH or DELETE work, but GET
 
   return (
     <div>
@@ -82,7 +78,14 @@ function CreateOrder() {
 
         <div>
           <input type='hidden' name='cart' value={JSON.stringify(cart)} />
-          <button disabled={isSubmitting}>
+          <button
+            className='tracking-wide rounded-full
+            bg-stone-400 uppercase font-semibold inline-block px-4 
+            py-3 hover:bg-stone-300 
+            border border-gray-300 hover:border-stone-400 transition-colors duration-300
+            focus:outline-none disabled:cursor-not-allowed'
+            disabled={isSubmitting}
+          >
             {isSubmitting ? 'Ordering...' : 'Order now'}
           </button>
         </div>
@@ -91,12 +94,10 @@ function CreateOrder() {
   );
 }
 
-// export async function action({ request }) {
+// action
 export async function createOrderAction({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  // console.log(formData); // // FormData {}
-  // console.log('Data', data); // {customer: 'hhh', phone: '+380971302977', address: 'jhbkj,'}
   console.log('Data', data);
 
   const order = {
