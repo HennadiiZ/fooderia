@@ -12,12 +12,16 @@ function AppLayout() {
   // {state: 'loading', location: {…},…}
 
   return (
-    <div className='layout'>
+    <div className='grid h-screen grid-rows-[auto_1fr_auto]'>
       {isLoading && <Loader />}
       <Header />
-      <main>
-        <Outlet />
-      </main>
+
+      <div className='overflow-scroll'>
+        <main className='max-w-5xl mx-auto'>
+          <Outlet />
+        </main>
+      </div>
+
       <CartOverview />
       <Footer />
     </div>
