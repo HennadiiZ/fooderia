@@ -47,13 +47,29 @@ function CreateOrder() {
       <Form method='POST'>
         <div>
           <label>First Name</label>
-          <input type='text' name='customer' required />
+          <input
+            type='text'
+            name='customer'
+            required
+            className='rounded-full w-full border border-stone-200
+            px-4 py-2 text-sm transition-all duration-300
+            placeholder:text-stone-400 focus:outline-none focus:ring 
+            md:px-6 md:py-3'
+          />
         </div>
 
         <div>
           <label>Phone number</label>
           <div>
-            <input type='tel' name='phone' required />
+            <input
+              type='tel'
+              name='phone'
+              required
+              className='rounded-full w-full border border-stone-200
+              px-4 py-2 text-sm transition-all duration-300
+              placeholder:text-stone-400 focus:outline-none focus:ring 
+              md:px-6 md:py-3'
+            />
           </div>
           {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
@@ -61,7 +77,15 @@ function CreateOrder() {
         <div>
           <label>Address</label>
           <div>
-            <input type='text' name='address' required />
+            <input
+              type='text'
+              name='address'
+              required
+              className='rounded-full w-full border border-stone-200
+              px-4 py-2 text-sm transition-all duration-300
+              placeholder:text-stone-400 focus:outline-none focus:ring 
+              md:px-6 md:py-3'
+            />
           </div>
         </div>
 
@@ -70,6 +94,8 @@ function CreateOrder() {
             type='checkbox'
             name='priority'
             id='priority'
+            className='h-6 w-6 accent-stone-400
+            focus:outline-none focus:ring focus:ring-offset-2'
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
