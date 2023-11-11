@@ -22,6 +22,9 @@ function SearchOrder() {
         placeholder='Search order number'
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        className='w-28 rounded-full bg-stone-300
+        px-4 py-2 text-sm transition-all duration-300
+        placeholder:text-stone-400 sm:focus:w-72 focus:outline-none focus:ring sm:w-64'
       />
     </form>
   );
