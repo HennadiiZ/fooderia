@@ -4,7 +4,10 @@ import UserName from '../features/user/UserName';
 
 function Header() {
   return (
-    <header className='bg-stone-400 uppercase px-4 py-3 border-b border-stone-600'>
+    <header
+      className='bg-stone-400 uppercase px-4 py-3 border-b
+       border-stone-600 sm:px-6 flex justify-between items-center'
+    >
       <Link to='/' className='tracking-wider'>
         Pizzaria
       </Link>
