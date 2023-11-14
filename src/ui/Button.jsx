@@ -10,6 +10,8 @@ function Button({ children, disabled, to, type }) {
   const styles = {
     primary: base + ' px-4 py-3 md:px-6 md:py-4',
     small: base + ' px-2 py-2 md:px-5 md:py-2.5 text-xs',
+    // secondary:
+    //   'tracking-wide rounded-full bg-transparent uppercase font-semibold inline-block  hover:bg-stone-300 border border-gray-300 hover:border-stone-400 transition-colors duration-300 focus:outline-none disabled:cursor-not-allowed',
   };
 
   if (to) {
