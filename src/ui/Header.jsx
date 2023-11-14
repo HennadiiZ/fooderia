@@ -9,7 +9,7 @@ function Header() {
        border-stone-600 sm:px-6 flex justify-between items-center'
     >
       <Link to='/' className='tracking-wider'>
-        Pizzaria
+        Foodaria
       </Link>
       <SearchOrder />
       <UserName />

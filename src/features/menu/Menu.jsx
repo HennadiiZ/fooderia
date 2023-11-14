@@ -6,7 +6,7 @@ function Menu() {
   const menu = useLoaderData();
   console.log(menu);
   return (
-    <ul>
+    <ul className='divide-y divide-stone-400 px-2'>
       {menu.map((food) => (
         <MenuItem food={food} key={food.id} />
       ))}
