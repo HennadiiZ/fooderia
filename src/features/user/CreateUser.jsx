@@ -11,7 +11,7 @@ function CreateUser() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('hi', username);
+    // console.log('hi', username);
 
     if (!username) {
       return;

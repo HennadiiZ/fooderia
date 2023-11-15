@@ -39,7 +39,9 @@ function CreateOrder() {
   const isSubmitting = navigation.state === 'submitting';
   const formErrors = useActionData();
   // const [withPriority, setWithPriority] = useState(false);
-  const cart = fakeCart;
+  // const cart = fakeCart;
+
+  const cart = useSelector((state) => state.cart.items);
 
   const username = useSelector((state) => state.user.username);
 
