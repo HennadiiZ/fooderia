@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import CreateUser from '../features/user/CreateUser';
+import Button from './Button';
 
 function Home() {
   const username = useSelector((state) => state.user.username);
@@ -13,7 +14,16 @@ function Home() {
           Only fresh and healthy ingredients.
         </span>
       </h1>
-      {username === '' ? <CreateUser /> : <p>Welcome, {username}</p>}
+      {username === '' ? (
+        <CreateUser />
+      ) : (
+        <>
+          <p className='p-4 pl-2'>Welcome, {username} </p>
+          <Button to='/menu' type='small'>
+            Go to Menu
+          </Button>
+        </>
+      )}
     </div>
   );
 }
