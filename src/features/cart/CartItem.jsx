@@ -4,7 +4,10 @@ import Button from '../../ui/Button';
 import { removeItem } from './cartSlice';
 
 function CartItem({ item }) {
-  const { id, pizzaId, name, quantity, totalPrice } = item;
+  // const { id, pizzaId, name, quantity, totalPrice, unitPrice } = item;
+  const { id, name, quantity, unitPrice } = item;
+
+  console.log('item', item);
 
   const dispatch = useDispatch();
 
@@ -19,7 +22,7 @@ function CartItem({ item }) {
       </p>
       <div className='flex items-center sm:gap-6 justify-between'>
         {/* <p className='text-sm font-bold'>{formatCurrency(totalPrice)}</p> */}
-        <p className='text-sm font-bold'>${totalPrice}</p>
+        <p className='text-sm font-bold'>${unitPrice * quantity}</p>
         <Button className='' type='small' onClick={handleDelete}>
           Delete
         </Button>
