@@ -30,9 +30,17 @@ function MenuItem({ food }) {
             <p className='text-small uppercase text-stone-400'>Sold out</p>
           )}
 
-          <Button onClick={handleAddToCart} type='small'>
+          {!soldOut ? (
+            <Button onClick={handleAddToCart} type='small'>
+              Add to cart
+            </Button>
+          ) : (
+            <Button type='small'>Not Available</Button>
+          )}
+
+          {/* <Button onClick={handleAddToCart} type='small'>
             Add to cart
-          </Button>
+          </Button> */}
         </div>
       </div>
     </li>
