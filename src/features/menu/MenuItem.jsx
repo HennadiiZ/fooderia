@@ -37,10 +37,6 @@ function MenuItem({ food }) {
           ) : (
             <Button type='small'>Not Available</Button>
           )}
-
-          {/* <Button onClick={handleAddToCart} type='small'>
-            Add to cart
-          </Button> */}
         </div>
       </div>
     </li>
