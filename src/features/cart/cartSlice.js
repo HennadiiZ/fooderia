@@ -17,10 +17,18 @@ const cartSlice = createSlice({
       item.quantity++;
       item.totalPrice = item.quantity * item.unitPrice;
     },
+    // decreaseItemQuantity: (state, action) => {
+    //   const item = state.cart.find((item) => item.id === action.payload);
+    //   item.quantity--;
+    //   item.totalPrice = item.quantity * item.unitPrice;
+    // },
     decreaseItemQuantity: (state, action) => {
       const item = state.cart.find((item) => item.id === action.payload);
-      item.quantity--;
-      item.totalPrice = item.quantity * item.unitPrice;
+
+      if (item.quantity > 1) {
+        item.quantity--;
+        item.totalPrice = item.quantity * item.unitPrice;
+      }
     },
     clearCart: (state) => {
       state.cart = [];

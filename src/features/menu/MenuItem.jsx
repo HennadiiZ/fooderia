@@ -3,6 +3,7 @@ import Button from '../../ui/Button';
 import { formatCurrency } from '../../utils/helpers';
 import { addItem } from '../cart/cartSlice';
 import DeleteCartItem from '../cart/DeleteCartItem';
+import UpdateCartItemQuantity from '../cart/UpdateCartItemQuantity';
 
 function MenuItem({ item }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = item;
@@ -51,7 +52,11 @@ function MenuItem({ item }) {
           )} */}
 
           {isItemInCart ? (
-            <DeleteCartItem id={id} />
+            <>
+              {' '}
+              <UpdateCartItemQuantity id={id} />
+              <DeleteCartItem id={id} />
+            </>
           ) : (
             !soldOut && (
               <Button onClick={handleAddToCart} type='small'>

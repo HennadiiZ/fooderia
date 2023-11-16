@@ -3,6 +3,7 @@ import Button from '../../ui/Button';
 // import { formatCurrency } from '../../utils/helpers';
 import { removeItem } from './cartSlice';
 import DeleteCartItem from './DeleteCartItem';
+import UpdateCartItemQuantity from './UpdateCartItemQuantity';
 
 function CartItem({ item }) {
   // const { id, pizzaId, name, quantity, totalPrice, unitPrice } = item;
@@ -27,6 +28,7 @@ function CartItem({ item }) {
         {/* <Button className='' type='small' onClick={handleDelete}>
           Delete
         </Button> */}
+        <UpdateCartItemQuantity id={id} />
         <DeleteCartItem id={id} />
       </div>
     </li>
