@@ -9,8 +9,8 @@ function Menu() {
 
   return (
     <ul className='divide-y divide-stone-400 px-2'>
-      {menu.map((food) => (
-        <MenuItem food={food} key={food.id} />
+      {menu.map((item) => (
+        <MenuItem item={item} key={item.id} />
       ))}
     </ul>
   );
