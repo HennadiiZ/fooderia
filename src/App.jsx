@@ -61,7 +61,7 @@ export default App;
 // npm install -D tailwindcss postcss autoprefixer
 // npx tailwindcss init -p
 // npm install -D prettier prettier-plugin-tailwindcss
-
+// npm install @reduxjs/toolkit react-redux
 
 // colors:
 // bg-stone-400

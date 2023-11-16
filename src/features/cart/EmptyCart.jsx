@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 function EmptyCart() {
   return (
-    <div>
-      <Link to="/menu">&larr; Back to menu</Link>
+    <div className='mt-5 p-5'>
+      <Link to='/menu'>&larr; Back to menu</Link>
 
-      <p>Your cart is still empty. Start adding some pizzas :)</p>
+      <p>Your cart is still empty. Start adding some stuff</p>
     </div>
   );
 }
