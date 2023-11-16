@@ -2,11 +2,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../ui/Button';
 import { formatCurrency } from '../../utils/helpers';
 import { addItem } from '../cart/cartSlice';
+import DeleteCartItem from '../cart/DeleteCartItem';
 
 function MenuItem({ item }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = item;
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.items);
+  const cart = useSelector((state) => state.cart.cart);
+
+  const isItemInCart = cart.some((cartItem) => cartItem.id === id);
 
   const handleAddToCart = () => {
     const newItem = {
@@ -19,7 +22,6 @@ function MenuItem({ item }) {
     };
 
     dispatch(addItem(newItem));
-    // dispatch(addItem(food));
     console.log(cart);
   };
 
@@ -48,11 +50,21 @@ function MenuItem({ item }) {
             <Button type='small'>Not Available</Button>
           )} */}
 
-          {!soldOut && (
+          {isItemInCart ? (
+            <DeleteCartItem id={id} />
+          ) : (
+            !soldOut && (
+              <Button onClick={handleAddToCart} type='small'>
+                Add to cart
+              </Button>
+            )
+          )}
+
+          {/* {!soldOut && (
             <Button onClick={handleAddToCart} type='small'>
               Add to cart
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </li>
