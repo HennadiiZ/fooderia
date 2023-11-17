@@ -3,6 +3,7 @@ import Header from './Header';
 import CartOverview from '../features/cart/CartOverview';
 import Loader from './Loader';
 import { Outlet, useNavigation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function AppLayout() {
   const navigation = useNavigation();
@@ -10,6 +11,8 @@ function AppLayout() {
   const isLoading = navigation.state === 'loading';
   // {state: 'idle', location: undefined,…}
   // {state: 'loading', location: {…},…}
+
+  const isCartSubmit = useSelector((state) => state.cart.submit);
 
   return (
     <div className='grid h-screen grid-rows-[auto_1fr_auto]'>
@@ -22,7 +25,7 @@ function AppLayout() {
         </main>
       </div>
 
-      <CartOverview />
+      {!isCartSubmit && <CartOverview />}
       <Footer />
     </div>
   );

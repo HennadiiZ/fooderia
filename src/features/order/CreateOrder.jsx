@@ -2,8 +2,9 @@
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import { createOrder } from '../../services/apiRestaurant';
 import Button from '../../ui/Button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EmptyCart from '../cart/EmptyCart';
+import { submitOrder } from '../cart/cartSlice';
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -39,6 +40,11 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const formErrors = useActionData();
+  //
+  const dispatch = useDispatch();
+
+  //
+  //
   // const [withPriority, setWithPriority] = useState(false);
   // const cart = fakeCart;
 
@@ -46,8 +52,15 @@ function CreateOrder() {
 
   const username = useSelector((state) => state.user.username);
 
+  const isCartSubmit = useSelector((state) => state.cart.submit);
+
   if (!cart.length) {
     return <EmptyCart />;
+  }
+
+  function handleSubmit() {
+    dispatch(submitOrder());
+    console.log('crt', crt);
   }
 
   console.log('mycart', cart);
@@ -108,7 +121,7 @@ function CreateOrder() {
 
         <div>
           <input type='hidden' name='cart' value={JSON.stringify(cart)} />
-          <Button disabled={isSubmitting} type='small'>
+          <Button disabled={isSubmitting} type='small' onClick={handleSubmit}>
             {isSubmitting ? 'Ordering...' : 'Order now'}
           </Button>
         </div>
