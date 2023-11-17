@@ -6,7 +6,7 @@ import DeleteCartItem from './DeleteCartItem';
 import UpdateCartItemQuantity from './UpdateCartItemQuantity';
 
 function CartItem({ item }) {
-  // const { id, pizzaId, name, quantity, totalPrice, unitPrice } = item;
+  // const { pizzaId, name, quantity, totalPrice, unitPrice } = item;
   const { id, name, quantity, unitPrice } = item;
 
   console.log('item', item);
