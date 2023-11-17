@@ -7,11 +7,11 @@ function UpdateCartItemQuantity({ id }) {
 
   return (
     <div>
-      <Button type='small' onClick={() => dispatch(increaseItemQuantity(id))}>
-        +
-      </Button>
       <Button type='small' onClick={() => dispatch(decreaseItemQuantity(id))}>
         -
+      </Button>
+      <Button type='small' onClick={() => dispatch(increaseItemQuantity(id))}>
+        +
       </Button>
     </div>
   );
