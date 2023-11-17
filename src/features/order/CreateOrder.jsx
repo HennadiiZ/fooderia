@@ -4,7 +4,8 @@ import { createOrder } from '../../services/apiRestaurant';
 import Button from '../../ui/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import EmptyCart from '../cart/EmptyCart';
-import { submitOrder } from '../cart/cartSlice';
+import { clearCart, submitOrder } from '../cart/cartSlice';
+// import store from '../../store';
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -40,11 +41,9 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const formErrors = useActionData();
-  //
+
   const dispatch = useDispatch();
 
-  //
-  //
   // const [withPriority, setWithPriority] = useState(false);
   // const cart = fakeCart;
 
@@ -52,15 +51,12 @@ function CreateOrder() {
 
   const username = useSelector((state) => state.user.username);
 
-  const isCartSubmit = useSelector((state) => state.cart.submit);
-
   if (!cart.length) {
     return <EmptyCart />;
   }
 
   function handleSubmit() {
     dispatch(submitOrder());
-    console.log('crt', crt);
   }
 
   console.log('mycart', cart);
@@ -157,7 +153,10 @@ export async function createOrderAction({ request }) {
 
   // if averything is ok, create new order and redirect
   const newOrder = await createOrder(order);
-  console.log('newOrder', newOrder);
+  // console.log('newOrder', newOrder);
+
+  // DO NOT OVERUSE
+  // store.dispatch(clearCart());
 
   return redirect(`/order/${newOrder.id}`);
 }

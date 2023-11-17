@@ -25,6 +25,7 @@ function AppLayout() {
         </main>
       </div>
 
+      {/* <CartOverview /> */}
       {!isCartSubmit && <CartOverview />}
       <Footer />
     </div>
