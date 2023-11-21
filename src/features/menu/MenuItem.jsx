@@ -10,12 +10,13 @@ function MenuItem({ item }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
 
-  const isItemInCart = cart.some((cartItem) => cartItem.id === id);
+  // const isItemInCart = cart.some((cartItem) => cartItem.id === id);
+  const isItemInCart = cart.some((cartItem) => cartItem.pizzaId === id);
 
   const handleAddToCart = () => {
     const newItem = {
-      // pizzaId: id,
-      id: id,
+      pizzaId: id,
+      // id: id,
       name,
       quantity: 1,
       unitPrice,

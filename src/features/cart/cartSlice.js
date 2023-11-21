@@ -4,26 +4,25 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     cart: [],
+    submit: false,
   },
   reducers: {
     addItem: (state, action) => {
       state.cart.push(action.payload);
     },
     removeItem: (state, action) => {
-      state.cart = state.cart.filter((item) => item.id !== action.payload);
+      // state.cart = state.cart.filter((item) => item.id !== action.payload);
+      state.cart = state.cart.filter((item) => item.pizzaId !== action.payload);
     },
     increaseItemQuantity: (state, action) => {
-      const item = state.cart.find((item) => item.id === action.payload);
+      // const item = state.cart.find((item) => item.id === action.payload);
+      const item = state.cart.find((item) => item.pizzaId === action.payload);
       item.quantity++;
       item.totalPrice = item.quantity * item.unitPrice;
     },
-    // decreaseItemQuantity: (state, action) => {
-    //   const item = state.cart.find((item) => item.id === action.payload);
-    //   item.quantity--;
-    //   item.totalPrice = item.quantity * item.unitPrice;
-    // },
     decreaseItemQuantity: (state, action) => {
-      const item = state.cart.find((item) => item.id === action.payload);
+      // const item = state.cart.find((item) => item.id === action.payload);
+      const item = state.cart.find((item) => item.pizzaId === action.payload);
 
       if (item.quantity > 1) {
         item.quantity--;
@@ -32,6 +31,9 @@ const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.cart = [];
+    },
+    submitOrder: (state) => {
+      state.submit = true;
     },
   },
 });
@@ -42,6 +44,7 @@ export const {
   increaseItemQuantity,
   decreaseItemQuantity,
   clearCart,
+  submitOrder,
 } = cartSlice.actions;
 export default cartSlice.reducer;
 
