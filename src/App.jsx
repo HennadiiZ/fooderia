@@ -63,10 +63,6 @@ export default App;
 // npm install -D prettier prettier-plugin-tailwindcss
 // npm install @reduxjs/toolkit react-redux
 
-// npm install -g json-server
-// sudo npm install -g json-server
-// json-server --watch db.json --port 3001
-
 // http://localhost:9000/data
 // npm i json-server
 // npm run server
