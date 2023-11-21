@@ -50,7 +50,16 @@ function CreateOrder() {
 
   const cart = useSelector((state) => state.cart.cart); // can't use my cart because of id and pizzaId
 
-  const username = useSelector((state) => state.user.username);
+  // const username = useSelector((state) => state.user.username);
+  const {
+    username,
+    status: addressStatus,
+    position,
+    address,
+    error: errorAddress,
+  } = useSelector((state) => state.user);
+
+  const isLoadingAddress = addressStatus === 'loading';
 
   if (!cart.length) {
     return <EmptyCart />;
@@ -66,7 +75,7 @@ function CreateOrder() {
     <div className='px-4 py-6'>
       <h2 className='text-xl font-semibold mb-8'>Make your order!</h2>
 
-      <button onClick={() => dispatch(fetchAddress())}>GET POSITION</button>
+      {/* <button onClick={() => dispatch(fetchAddress())}>GET POSITION</button> */}
       {/* <Form method='POST' action='/order/new'> */}
       <Form method='POST'>
         <div className='mb-5 flex flex-col gap-2 sm:flex-row sm:item-center'>
@@ -98,8 +107,25 @@ function CreateOrder() {
               name='address'
               required
               className='input w-full'
+              disabled={isLoadingAddress}
+              defaultValue={address}
             />
+            {addressStatus === 'error' && (
+              <p className='text-xs mt-2 text-red-700'>{errorAddress}</p>
+            )}
           </div>
+          {!position.latitude && !position.longitude && (
+            <Button
+              disabled={isLoadingAddress}
+              type='small'
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(fetchAddress());
+              }}
+            >
+              GET POSITION
+            </Button>
+          )}
         </div>
 
         <div className='mb-12 flex items-center gap-5'>
@@ -119,7 +145,20 @@ function CreateOrder() {
 
         <div>
           <input type='hidden' name='cart' value={JSON.stringify(cart)} />
-          <Button disabled={isSubmitting} type='small' onClick={handleSubmit}>
+          <input
+            type='hidden'
+            name='position'
+            value={
+              position.longitude && position.latitude
+                ? `${position.latitude},${position.longitude}`
+                : ''
+            }
+          />
+          <Button
+            disabled={isSubmitting || isLoadingAddress}
+            type='small'
+            onClick={handleSubmit}
+          >
             {isSubmitting ? 'Ordering...' : 'Order now'}
           </Button>
         </div>
@@ -141,7 +180,7 @@ export async function createOrderAction({ request }) {
     priority: data.priority === 'on',
   };
 
-  // console.log('order', order);
+  console.log('order', order);
 
   const errors = {};
 
@@ -161,6 +200,8 @@ export async function createOrderAction({ request }) {
   // store.dispatch(clearCart());
 
   return redirect(`/order/${newOrder.id}`);
+
+  // return null;
 }
 
 export default CreateOrder;
