@@ -78,7 +78,7 @@ function Order() {
       <div className='flex items-center justify-between flex-wrap gap-2  bg-stone-300 px-6 py-5'>
         <p>
           {deliveryIn >= 0
-            ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
+            ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left`
             : 'Order should have arrived'}
         </p>
         <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
