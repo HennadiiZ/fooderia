@@ -5,6 +5,7 @@ import Button from '../../ui/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import EmptyCart from '../cart/EmptyCart';
 import { clearCart, submitOrder } from '../cart/cartSlice';
+import { fetchAddress } from '../user/userSlice';
 // import store from '../../store';
 
 // https://uibakery.io/regex-library/phone-number
@@ -65,6 +66,7 @@ function CreateOrder() {
     <div className='px-4 py-6'>
       <h2 className='text-xl font-semibold mb-8'>Make your order!</h2>
 
+      <button onClick={() => dispatch(fetchAddress())}>GET POSITION</button>
       {/* <Form method='POST' action='/order/new'> */}
       <Form method='POST'>
         <div className='mb-5 flex flex-col gap-2 sm:flex-row sm:item-center'>
